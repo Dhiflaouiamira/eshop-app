@@ -6,8 +6,22 @@
       <strong>Client:</strong> {{ order.client.fullName}}<br>
       <strong>Date de création:</strong> {{ order.createdAt | date }}<br>
       <strong>Statut:</strong>
-      <span *ngIf="order.status=='on-going'" class="badge bg-warning">{{ order.status }}</span>
-      <span *ngIf="order.status=='delivered'" class="badge bg-success">{{ order.status }}</span>
+      <button *ngIf="order.status=='on-going'" class="badge bg-warning" (click)="showStatus=true">{{ order.status }}</button>
+      <button *ngIf="order.status=='delivered'" class="badge bg-success">{{ order.status }}</button>
+      <form    *ngIf="showStatus"        [formGroup]="formvalue">
+        <!-- Status -->
+        <div class="mb-3 row">
+          <div class="col-sm-10">
+            <select formControlName="status" class="form-select" id="status">
+              <option value="on-going">On-going</option>
+              <option value="delivered">Delivered</option>
+              <option value="canceled">Canceled</option>
+            </select>
+          </div>
+        </div>
+
+        
+      </form>
       <div>
        
         <strong>Produits:</strong>

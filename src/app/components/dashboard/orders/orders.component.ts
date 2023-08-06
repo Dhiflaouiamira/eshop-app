@@ -19,6 +19,9 @@ throw new Error('Method not implemented.');
   constructor(private orderService: OrderService) { }
   orders: Order[] = [];
   newOrder: Order = new Order();
+  selectedorder:Order= new Order();
+  showStatus = false;
+
   ngOnInit(): void {
     this.loadOrders();
   }
